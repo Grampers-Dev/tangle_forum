@@ -1,33 +1,78 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="us-en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token }}">
-        <meta name="description" content="Tangle Forum">
-        <meta name="author" content="">
-        <meta name="keywords" content="forum, django, python3, bootstrap, tangle">
-        <meta name="robots" content="index, follow">
-        <title>Tangle</title>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta name="description" content="Tangle Forum">
+    <meta name="author" content="">
+    <meta name="keywords" content="forum, django, python3, bootstrap, tangle">
+    <meta name="robots" content="index, follow">
+    <title>Tangle</title>
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{% static 'bs/css/bootstrap.min.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
-    </head>
-    <body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bs/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+</head>
+<body>
 
+    {% block body %} {% endblock %}
 
-        {% block body %} {% endblock %}
+    <!-- jQuery -->
+    <script src="{% static 'bs/js/jquery.min.js' %}"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="{% static 'bs/js/bootstrap.min.js' %}"></script>
 
-        <!-- jQuery -->
-        <script src="{% static 'bs/js/jquery.min.js' %}"></script>
-        <!-- Bootstrap JavaScript -->
-        <script src="{% static 'bs/js/bootstrap.min.js' %}"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-        </script>
-    </body>
+    <!-- jQuery Validation plugin -->
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        // Add validation rules to the form fields
+        $("#registration-form").validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 5
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                password1: {
+                    required: true,
+                    minlength: 8
+                },
+                password2: {
+                    required: true,
+                    minlength: 8,
+                    equalTo: "#password1"
+                }
+            },
+            messages: {
+                username: {
+                    required: "Please enter a username",
+                    minlength: "<span class='error-minlength'>Username must be at least 5 characters long</span>"
+                },
+                email: {
+                    required: "Please enter your email address",
+                    email: "<span class='error-email'>Please enter a valid email address</span>"
+                },
+                password1: {
+                    required: "Please enter a password",
+                    minlength: "<span class='error-password'>Password must be at least 8 characters long</span>"
+                },
+                password2: {
+                    required: "Please confirm your password",
+                    minlength: "<span class='error-password'>Password must be at least 8 characters long</span>",
+                    equalTo: "<span class='error-password-mismatch'>Passwords do not match</span>"
+                }
+            }
+        });
+    });
+    </script>
+</body>
 </html>

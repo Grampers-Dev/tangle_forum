@@ -300,3 +300,13 @@ div.menu {
 .logo-image {
     height: 200px;
 }
+
+.error-minlength {
+    color: red;
+}
+.error-password {
+    color: red;
+}
+.error-password-mismatch {
+    color: red;
+}
