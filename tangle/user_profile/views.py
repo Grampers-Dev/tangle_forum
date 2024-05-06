@@ -13,6 +13,7 @@ def register(request):
     View for user registration.
 
     Handles the registration form submission and creates a new user account.
+    Sends a welcome email to the newly registered user.
 
     Parameters:
         request (HttpRequest): The HTTP request object.
