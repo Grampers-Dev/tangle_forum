@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from .forms import ExtendedUserCreationForm
 from django.contrib import messages
 
@@ -15,21 +18,21 @@ def register(request):
         request (HttpRequest): The HTTP request object.
 
     Returns:
-        HttpResponseRedirect:
-        Redirects to the login page upon successful registration.
-
-    References:
-        Django forms: https://docs.djangoproject.com/en/stable/topics/forms/
-        Django messages:
-        https://docs.djangoproject.com/en/stable/ref/contrib/messages/
+        HttpResponseRedirect: Redirects to the login page upon successful registration.
     """
-
     if request.method == 'POST':
         form = ExtendedUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            messages.success(request,
-                             'Your account has been created. Please log in.')
+
+            # Send welcome email to the newly registered user
+            subject = 'Welcome to Our Platform!'
+            context = {'username': user.username}  # Pass any additional context variables needed for the email template
+            html_message = render_to_string('welcome_email.html', context)
+            plain_message = strip_tags(html_message)
+            send_mail(subject, plain_message, 'your_email@gmail.com', [user.email], html_message=html_message)
+
+            messages.success(request, 'Your account has been created. Please log in.')
             return redirect('login')
     else:
         form = ExtendedUserCreationForm()
