@@ -29,18 +29,15 @@ class Thread(models.Model):
     description = models.TextField(max_length=100, blank=False,
                                    help_text="Detailed description of thread.")
     date_created = models.DateTimeField(auto_now_add=True,
-                                        help_text="The date and time this
-                                        thread was created.")
+                                        help_text="The date and time this thread was created.")
 
     # Relationships to track which users have liked or disliked the thread
     liked_by = models.ManyToManyField(User, related_name='liked_threads',
                                       blank=True,
-                                      help_text="Users who have
-                                      liked this thread.")
+                                      help_text="Users who have liked this thread.")
     disliked_by = models.ManyToManyField(User, related_name='disliked_threads',
                                          blank=True,
-                                         help_text="Users who have
-                                         disliked this thread.")
+                                         help_text="Users who have disliked this thread.")
 
     @property
     def total_likes(self):
