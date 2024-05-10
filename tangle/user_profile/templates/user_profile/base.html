@@ -28,51 +28,40 @@
 
     <!-- jQuery Validation plugin -->
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="{% static 'js/scripts.js' %}"></script>
     <script>
-    $(document).ready(function () {
-        // Add validation rules to the form fields
-        $("#registration-form").validate({
-            rules: {
-                username: {
-                    required: true,
-                    minlength: 5
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                password1: {
-                    required: true,
-                    minlength: 8
-                },
-                password2: {
-                    required: true,
-                    minlength: 8,
-                    equalTo: "#password1"
+$(document).ready(function() {
+    $('#like-section form').on('submit', function(event) {
+        event.preventDefault();  // Stop the form from submitting normally
+        var threadId = $('input[name="thread_id"]').val();  // Get the thread ID from the hidden input
+        var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();  // CSRF token for POST request
+
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),  // Use the action URL from the form itself
+            data: {
+                'thread_id': threadId,
+                'csrfmiddlewaretoken': csrfToken
+            },
+            success: function(response) {
+                $('#like-count').text(response.total_likes + ' Likes');  // Update the like count
+                // Optionally update the button based on the new state
+                var button = $('#like-section button');
+                if (response.is_liked) {
+                    button.removeClass('btn-primary').addClass('btn-danger').text('Dislike');
+                } else {
+                    button.removeClass('btn-danger').addClass('btn-primary').text('Like');
                 }
             },
-            messages: {
-                username: {
-                    required: "Please enter a username",
-                    minlength: "<span class='error-minlength'>Username must be at least 5 characters long</span>"
-                },
-                email: {
-                    required: "Please enter your email address",
-                    email: "<span class='error-email'>Please enter a valid email address</span>"
-                },
-                password1: {
-                    required: "Please enter a password",
-                    minlength: "<span class='error-password'>Password must be at least 8 characters long</span>"
-                },
-                password2: {
-                    required: "Please confirm your password",
-                    minlength: "<span class='error-password'>Password must be at least 8 characters long</span>",
-                    equalTo: "<span class='error-password-mismatch'>Passwords do not match</span>"
-                }
+            error: function(xhr, status, error) {
+                console.error("Error: " + error);  // Log errors
             }
         });
     });
+});
+
     </script>
 </body>
 </html>
