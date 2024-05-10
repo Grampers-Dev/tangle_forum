@@ -12,6 +12,7 @@ from django.views.generic.base import View
 from django.views import View
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+#from django.core.mail import send_mail
 
 
 def index(request):
@@ -317,3 +318,12 @@ def update_likes(request):
     except Thread.DoesNotExist:
         return JsonResponse({'status': 'error', 'error':
                              'Thread not found'}, status=404)
+
+
+#def send_test_email(request):
+#    subject = 'Hello from Tangle'
+#    message = 'This is a test email sent from the Tangle Django application.'
+#    email_from = 'tangleforum.info@gmail.com'  # Sender's email
+#    recipient_list = ['your-email@example.com',]  # Enter your testing email address
+#    send_mail(subject, message, email_from, recipient_list)
+#    return HttpResponse("Email sent!")
