@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+#from .models import Reaction
+
 
 
 class Profile(models.Model):
@@ -97,3 +100,23 @@ class Reply(models.Model):
         Returns a string representation of the Reply object.
         """
         return self.message[:50]
+    
+def toggle_reaction(user, thread_id, reaction):
+    # Get or create the profile
+    profile, _ = Profile.objects.get_or_create(user=user)
+    content_type = ContentType.objects.get_for_model(Thread)
+    reaction_obj, created = Reaction.objects.get_or_create(user=user, content_type=content_type, object_id=thread_id)
+
+    if reaction in ['like', 'dislike']:
+        reaction_obj.is_liked = (reaction == 'like')
+        reaction_obj.save()
+    else:
+        # If the reaction is neither like nor dislike, delete the reaction object
+        reaction_obj.delete()
+
+    # Increment likes count if the reaction is 'like'
+    if reaction == 'like':
+        profile.likes += 1
+        profile.save()
+
+    return {'status': 'success', 'reaction': reaction}
