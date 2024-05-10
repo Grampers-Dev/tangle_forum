@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="pageTitle">Register</div>
-
+            
             <form id="registration-form" action="{% url 'register' %}" method="POST" role="form">
                 {% csrf_token %}
                 {% if form.non_field_errors %}
