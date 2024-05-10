@@ -29,9 +29,9 @@ def register(request):
             # Send welcome email to the newly registered user
             subject = 'Welcome to Tangle!'
             context = {'username': user.username}  # Pass any additional context variables needed for the email template
-            html_message = render_to_string('welcome_email.html', context)
-            plain_message = strip_tags(html_message)
-            send_mail(subject, plain_message, 'graham@encouragementtoken.com', [user.email], html_message=html_message)
+            #html_message = render_to_string('welcome_email.html', context)
+            #plain_message = strip_tags(html_message)
+            #send_mail(subject, plain_message, 'graham@encouragementtoken.com', [user.email], html_message=html_message)
 
             messages.success(request, 'Your account has been created. Please log in.')
             return redirect('login')
