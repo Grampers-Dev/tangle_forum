@@ -1,10 +1,20 @@
-{% extends 'base.html' %}
 
-{% block content %}
-    <h2>Welcome to Tangle, {{ username }}!</h2>
-    <p>Thank you for joining our community.</p>
-    <p>Feel free to explore the site and start posting your thoughts.</p>
-    <p>Happy Tangling!</p>
-    <p>Best,</p>
-    <p>The Tangle Team</p>
-{% endblock %}
+
+{% load i18n %}
+
+{% blocktrans with username=user.username %}
+    Hello, {{ username }}! Welcome to Tangle.
+{% endblocktrans %}
+
+<p>{% trans "Thank you for joining our community." %}</p>
+
+{% blocktrans %}
+    Feel free to explore the site and start posting your thoughts.
+{% endblocktrans %}
+
+<p>{% trans "Happy Tangling!" %}</p>
+
+{% blocktrans %}
+    Best,
+    The Tangle Team
+{% endblocktrans %}

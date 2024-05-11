@@ -3,7 +3,7 @@ from . import views
 from .views import dislike_thread
 from .views import like_thread, likes
 from .views import thread_detail
-from .views import test_email
+
 
 
 urlpatterns = [
@@ -19,5 +19,4 @@ urlpatterns = [
     path('likes/', likes, name='likes'),
     path('dislike/<int:thread_id>/', dislike_thread, name='dislike_thread'),
     path('thread/<int:pk>/', thread_detail, name='thread_detail'),
-    path('test-email/', test_email, name='send_test_email'),
 ]
