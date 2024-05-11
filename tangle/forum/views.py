@@ -321,10 +321,3 @@ def update_likes(request):
                              'Thread not found'}, status=404)
 
 
-def test_email(request):
-    subject = 'Hello from Tangle'
-    message = 'This is a test email sent from the Tangle Django application.'
-    email_from = 'tangleforum.info@gmail.com'  # Sender's email
-    recipient_list = ['tanyamartinp93@gmail.com',]  # Enter your testing email address
-    send_mail(subject, message, email_from, recipient_list)
-    return HttpResponse("Email sent!")
