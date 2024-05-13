@@ -120,3 +120,5 @@ def toggle_reaction(user, thread_id, reaction):
         profile.save()
 
     return {'status': 'success', 'reaction': reaction}
+
+

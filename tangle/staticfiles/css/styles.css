@@ -48,7 +48,6 @@ body {
 }
 
 div.container {
-    background-color: white;
     margin-top: 30px;
     padding-top: 20px;
     margin-bottom: 30px;
@@ -90,7 +89,6 @@ div.logo {
     font-weight: bolder;
     padding-top: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px solid rgba(44, 62, 80, .2);
     margin-bottom: 10px;
     text-align: center;
 }
@@ -100,13 +98,7 @@ div.logo > div {
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px solid rgba(51, 122, 183, .2);
     margin-bottom: 10px;
-    /*background: rgba(51, 122, 183, .9);*/
-    background-color: rgb(51, 183, 112);
-    color: white !important;
-    box-shadow: 3px 5px 5px rgba(51, 183, 112, .5);
-    border-radius: 10px;
     text-align: center;
     width: auto;
 }
@@ -149,6 +141,9 @@ div._panel div.info-bit-last {
 }
 div._panel div.info-bit > h1, div._panel div.info-bit-last > h1 {
     font-size: 20px;
+}
+.panel {
+    background-color: none;
 }
 .center {
     text-align: center !important;
@@ -265,7 +260,7 @@ blockquote {
     border-color: rgba(51, 183, 112, .5);
 }
 div.menu {
-    text-align: right;
+    text-align: center;
     margin-bottom: 15px;
 }
  
@@ -298,7 +293,7 @@ div.menu {
 }
 
 .logo-image {
-    height: 200px;
+    height: 500px;
 }
 
 .error-minlength {
@@ -310,3 +305,4 @@ div.menu {
 .error-password-mismatch {
     color: red;
 }
+

@@ -15,7 +15,6 @@ from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
-
 def index(request):
     """
     Render the index page with a form to create new threads and
@@ -319,5 +318,4 @@ def update_likes(request):
     except Thread.DoesNotExist:
         return JsonResponse({'status': 'error', 'error':
                              'Thread not found'}, status=404)
-
 
