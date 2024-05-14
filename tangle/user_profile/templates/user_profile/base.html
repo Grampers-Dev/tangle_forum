@@ -36,7 +36,7 @@
     <!-- Custom JavaScript -->
     <script src="{% static 'js/scripts.js' %}"></script>
     <script>
-$(document).ready(function() {
+        $(document).ready(function() {
     $('#like-section form').on('submit', function(event) {
         event.preventDefault();  // Stop the form from submitting normally
         var threadId = $('input[name="thread_id"]').val();  // Get the thread ID from the hidden input

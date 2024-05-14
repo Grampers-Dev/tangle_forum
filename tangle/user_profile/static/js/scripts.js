@@ -53,16 +53,19 @@ let animationFrameId;
 function updateGradient() {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    // Calculate the diagonal to ensure the gradient covers the entire background
-    const size = Math.sqrt(width * width + height * height);
+    // Calculate a size that surely covers the entire element even during rapid resizes
+    const size = Math.max(width, height) * 2; // Ensure an overly sufficient coverage
 
-    degree = (degree + .5) % 360; // Increment degree and reset every 360
+    degree = (degree + 0.5) % 360; // Increment degree slowly to animate rotation
     const gradientColor = `linear-gradient(${degree}deg, rgba(255,0,0,1), rgba(0,0,255,1))`;
     bodyElement.style.backgroundImage = gradientColor;
     bodyElement.style.backgroundSize = `${size}px ${size}px`;
+    bodyElement.style.backgroundPosition = 'center center';
+    bodyElement.style.backgroundRepeat = 'no-repeat';
 
     animationFrameId = requestAnimationFrame(updateGradient); // Continue the animation
 }
+
 
 // Function to start the animation
 function startAnimation() {
@@ -78,6 +81,23 @@ function stopAnimation() {
         animationFrameId = null;
     }
 }
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Debounced version of updateGradient
+const debouncedUpdateGradient = debounce(function() {
+    updateGradient();
+}, 50);  // Adjust delay as necessary, 50ms is generally reasonable
 
 // Event listener to update gradient immediately on window resize
 window.addEventListener('resize', updateGradient);

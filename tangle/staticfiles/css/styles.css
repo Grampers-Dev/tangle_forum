@@ -33,13 +33,13 @@ body {
 
 @keyframes colorChange {
     0% {
-        background-color: rgba(29, 132, 99, 0.9);
+        background-color: rgba(255, 72, 0, 0.9);
     }
     50% {
         background-color: rgba(100, 132, 229, 0.9);
     }
     100% {
-        background-color: rgba(29, 132, 99, 0.9);
+        background-color: rgba(0, 85, 255, 0.9);
     }
 }
 
@@ -63,10 +63,11 @@ a, a:hover, a:active, a:focus, a:visited {
 a:hover {
     color: rgba(51, 183, 112, .9);
 }
-  
-.blue {
-    color: blue !important;
+
+a {
+    color:#333;
 }
+  
 .white {
     color: white !important;
 }
@@ -188,7 +189,6 @@ footer {
 }
 div.panel-body {
     padding-top: 10px;
-    box-shadow: 3px 5px 5px rgba(51, 183, 112, .5);
 }
 .panel-primary > .panel-heading {
     border-radius: 0;
@@ -203,6 +203,11 @@ div.panel-body {
 .panel-title {
     margin-bottom: 10px;
 }
+
+.panel panel-primary reply {
+    border-radius: 3px;
+}
+
 .btn-primary, .btn-danger {
     background-color: rgb(51, 183, 112);
     border-color: rgba(51, 183, 112, .5);
@@ -231,7 +236,6 @@ p {
     margin-bottom: 5px;
 }
 #loginBlock {
-    background-color: white;
     margin-top: 30px;
     padding-top: 20px;
     margin-bottom: 30px;
@@ -305,4 +309,11 @@ div.menu {
 .error-password-mismatch {
     color: red;
 }
+
+.panel.panel-primary {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 30px;
+}
+
 
