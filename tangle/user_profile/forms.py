@@ -1,7 +1,9 @@
 from django import forms
+from django.forms import ModelForm 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
+from forum.models import Profile
+from user_profile.models import Profile 
 
 class ExtendedUserCreationForm(UserCreationForm):
     """
@@ -110,3 +112,9 @@ class ExtendedAuthenticationForm(AuthenticationForm):
             'placeholder': 'Enter a Password',
             'tabindex': '2'
         })
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio', 'location', 'birth_date', 'image']
