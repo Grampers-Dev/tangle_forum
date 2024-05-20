@@ -1,0 +1,15 @@
+{% extends 'user_profile/base.html' %}
+{% block body %}
+{% load static %}
+{% load cloudinary %}
+{% load url from future %}
+
+<div id='backend_upload'>
+    <form action="{% url "photo_album.views.upload" %}" method="post"
+          enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ backend_form }}
+      <input type="submit" value="Upload">
+    </form>
+  </div>  
+{% endblock %}
