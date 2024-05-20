@@ -2,86 +2,170 @@
 {% block body %}
 {% load static %}
 
+<div class="logo">
+    <div>
+        <a href="{% url 'index' %}">
+            <img src="https://res.cloudinary.com/dhx65uemx/image/upload/v1715630230/Tangle_hokbbr.svg" alt="Tangle Logo" class="logo-image">
+        </a>
+    </div>
+</div>
+
+<div class="pageTitle">Create threads and discuss popular topics with each other.</div>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-lg-offset-0">
-            <div class="logo">
-                <div>
-                    <a href="{% url 'index' %}">
-                        <img src="https://res.cloudinary.com/dhx65uemx/image/upload/v1715630230/Tangle_hokbbr.svg" alt="Tangle Logo" class="logo-image">
-                    </a>
+            <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">
+                                <i class="fas fa-home"></i>
+                            </a>
+                        </li>                        
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}">
+                                <i class="far fa-user"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
                 </div>
-            </div>
-            <div class="menu">
-                <div class="container">
-                    <a href="{% url 'index' %}" class="btn btn-primary m-item">Home</a>
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'profile' %}" class="btn btn-primary m-item">Profile</a>
-                    <a href="{% url 'logout' %}" class="btn btn-primary m-item">Logout</a>
-                    {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-primary m-item">Login</a>
-                    {% endif %}
-                </div>
-            </div>
-            
-            </div>
+            </nav>
 
             <div class="pageTitle">Thread Listing </div>
+
+                    <!-- Toolbar Container -->
+                    <div class="toolbar d-flex justify-content-end mb-3">
+                        {% if user.is_authenticated %}
+                        <a href="#newModal" data-toggle="modal" class="btn btn-primary mr-2" title="Add Thread">
+                            <i class="glyphicon glyphicon-plus-sign"></i> Add Thread
+                        </a>
+                        {% endif %}
+                        <button id="reveal-btn" class="btn btn-primary mr-2">
+                            <i class="far fa-eye"></i> Show Threads
+                        </button>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#statsCollapse"
+                            aria-expanded="false" aria-controls="statsCollapse">
+                            <i class="fas fa-chart-bar"></i> Stats
+                        </button>
+                    </div>
 
             {% if user.is_authenticated %}
             <div class="row">
                 <div class="col-lg-3">
-                    <a href="#newModal" data-toggle="modal" class="btn btn-primary" title="Add Thread">
-                        <i class="glyphicon glyphicon-plus-sign"></i> Add Thread
-                    </a>
                 </div>
             </div>
             {% endif %}
             
-            <div class="row pad">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-lg-4">Name</div>
-                                <div class="col-lg-4">Description</div>
-                                <div class="col-lg-4">Last Post</div>
-                            </div>
-                        </div>
-                        {% for thread in threads %}
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <h3 class="panel-title">
-                                        <a href="{%url 'thread' thread.id %}" style="font-size: 18px;" class="blue">
-                                            {{ thread.title }}
-                                        </a>
-                                    </h3>
-                                </div>
-                                <div class="col-lg-4">
-                                    <p>
-                                        <em>
-                                            {{ thread.description }}
-                                        </em>
-                                    </p>
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <p>
-                                        <i class="glyphicon glyphicon-calendar"></i>
-                                        {{ thread.get_latest_date }} &nbsp;
-                                        <a href="{% url 'thread' thread.id %}#_reply">
-                                            <i class="glyphicon glyphicon-comment"></i> Reply
-                                        </a>
-                                    </p>
+            <div class="container mt-3">
+                <div class="row pad">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-lg-4">Name</div>
+                                    <div class="col-lg-4">Description</div>
+                                    <div class="col-lg-4">Last Post</div>
                                 </div>
                             </div>
+                            <div class="hidden-content">
+                                {% for thread in threads %}
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <h3 class="panel-title">
+                                                <a href="{% url 'thread' thread.id %}" style="font-size: 18px;" class="blue">
+                                                    {{ thread.title }}
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p>
+                                                <em>
+                                                    {{ thread.description }}
+                                                </em>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p>
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                                {{ thread.get_latest_date }} &nbsp;
+                                                <a href="{% url 'thread' thread.id %}#_reply">
+                                                    <i class="glyphicon glyphicon-comment"></i> Reply
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                        {% endfor %}
-
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-lg-12 text-center">
                     </div>
                 </div>
             </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 d-none d-lg-block">
+                <div class="collapse" id="statsCollapse">
+                    <div class="sidebar">
+                        <h3>Latest Thread</h3>
+                        {% if latest_thread %}
+                        <div>
+                            <a href="{% url 'thread' latest_thread.id %}">{{ latest_thread.title }}</a>
+                            <p>{{ latest_thread.description }}</p>
+                        </div>
+                        {% else %}
+                        <p>No latest thread available.</p>
+                        {% endif %}
+                        
+                        <h3>Latest Reply</h3>
+                        {% if latest_reply %}
+                        <div>
+                            <a href="{% url 'thread' latest_reply.thread.id %}#{{ latest_reply.id }}">{{ latest_reply.content }}</a>
+                            <p>by 
+                                {% if latest_reply.user.profile.image %}
+                                    <img src="{{ latest_reply.user.profile.image.url }}" alt="Profile Image" class="profile-image-small">
+                                {% endif %}
+                                {{ latest_reply.user.username }}
+                            </p>
+                        </div>
+                        {% else %}
+                        <p>No latest reply available.</p>
+                        {% endif %}
+                        
+                        <h3>Most Liked Thread</h3>
+                        {% if most_liked_thread %}
+                        <div>
+                            <a href="{% url 'thread' most_liked_thread.id %}">{{ most_liked_thread.title }}</a>
+                            <p>{{ most_liked_thread.description }}</p>
+                            <p>{{ most_liked_thread.likes_count }} Likes</p>
+                        </div>
+                        {% else %}
+                        <p>No most liked thread available.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
 
 
             <footer>
@@ -89,6 +173,7 @@
                     <div class="col-lg-12">
                         <div class="center">
                             Copyright &copy; 2024 Tangle. All rights reserved.
+
                         </div>
                     </div>
                 </div>
@@ -116,7 +201,6 @@
                         <label for="description">Description</label>
                         {{ form.description }}
                     </div>
-
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
