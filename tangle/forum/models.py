@@ -1,24 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth import get_user_model
+from cloudinary.models import CloudinaryField
 #from .models import Reaction
 
 
 
+User = get_user_model()
+
 class Profile(models.Model):
-    """
-    Represents a user profile associated with a Django User.
-    Includes additional information about the user, such as likes.
-    """
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    likes = models.PositiveIntegerField(default=0)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='forum_profile')
+    bio = models.TextField(blank=True)
+    location = models.CharField(max_length=30, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    image = CloudinaryField('image', blank=True, null=True)
 
     def __str__(self):
-        """
-        Returns a string representation of the Profile object.
-        """
         return self.user.username
-
 
 class Thread(models.Model):
     """
@@ -33,6 +32,7 @@ class Thread(models.Model):
                                    help_text="Detailed description of thread.")
     date_created = models.DateTimeField(auto_now_add=True,
                                         help_text="The date and time this thread was created.")
+    image = CloudinaryField('image', blank=True, null=True)
 
     # Relationships to track which users have liked or disliked the thread
     liked_by = models.ManyToManyField(User, related_name='liked_threads',
