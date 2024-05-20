@@ -6,7 +6,10 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from .forms import ExtendedUserCreationForm
 from django.contrib import messages
-
+from forum.models import Profile
+from cloudinary.forms import cl_init_js_callbacks      
+from .forms import ProfileForm
+from user_profile.models import Profile 
 
 
 def register(request):
@@ -43,23 +46,17 @@ def register(request):
 
 @login_required
 def profile(request):
-    """
-    View for user profile.
+    profile, created = Profile.objects.get_or_create(user=request.user)
 
-    Renders the user profile page.
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=profile)
 
-    Parameters:
-        request (HttpRequest): The HTTP request object.
-
-    Returns:
-        HttpResponse: Rendered user profile page.
-
-    Reference:
-        Django authentication:
-        https://docs.djangoproject.com
-        /en/stable/topics/auth/default/#the-login-required-decorator
-    """
-    return render(request, 'user_profile/profile.html')
+    return render(request, 'user_profile/profile.html', {'form': form, 'object': profile})
 
 
 def custom_login(request):
@@ -121,3 +118,13 @@ def custom_logout(request):
     messages.info(request, 'You have been logged out.')
     return redirect('login')
     
+def upload(request):
+  context = dict( backend_form = PhotoForm())
+
+  if request.method == 'POST':
+    form = PhotoForm(request.POST, request.FILES)
+    context['posted'] = form.instance
+    if form.is_valid():
+        form.save()
+
+  return render(request, 'upload.html', context)
