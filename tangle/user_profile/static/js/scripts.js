@@ -39,7 +39,7 @@ function typeWriter() {
   if (i < text.length) {
     pageTitle.innerHTML += text.charAt(i);
     i++;
-    setTimeout(typeWriter, 150); // Adjust typing speed
+    setTimeout(typeWriter, 250); // Adjust typing speed
   }
 }
 
@@ -107,3 +107,38 @@ document.addEventListener('DOMContentLoaded', startAnimation);
 
 // Stop the animation on page unload to prevent memory leaks
 window.addEventListener('beforeunload', stopAnimation);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const logoImage = document.querySelector('.logo-image');
+    gsap.to(logoImage, { 
+        duration: 2, 
+        y: "+=30", 
+        repeat: -1, 
+        yoyo: true, 
+        ease: "sine.inOut", 
+        modifiers: {
+            y: gsap.utils.unitize((y) => {
+                return Math.sin(parseFloat(y) * Math.PI / 180) * 20;
+            })
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const logoImage = document.querySelector('.logo-image');
+    gsap.to(logoImage, { 
+        duration: 1, 
+        scale: 1.2, 
+        repeat: -1, 
+        yoyo: true, 
+        ease: "power1.inOut"
+    });
+});
+
+$(document).ready(function(){
+    $(".panel-heading").click(function(){
+        var target = $(this).data("target");
+        $(target).toggle();
+    });
+});
+
