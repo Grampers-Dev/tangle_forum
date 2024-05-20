@@ -12,10 +12,8 @@
     <meta name="keywords" content="forum, django, python3, bootstrap, tangle">
     <meta name="robots" content="index, follow">
     <link rel="shortcut icon" href="{% static 'images/favicon_io/favicon.ico' %}" type="image/x-icon">
-
-
     <title>Tangle</title>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'bs/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
@@ -33,6 +31,7 @@
     <!-- jQuery Validation plugin -->
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <!-- Custom JavaScript -->
     <script src="{% static 'js/scripts.js' %}"></script>
     <script>
@@ -65,6 +64,15 @@
         });
     });
 });
+
+$(document).ready(function(){
+        $("#reveal-btn").click(function(){
+            $(".hidden-content").slideToggle();
+            $(this).text(function(i, text){
+                return text === "Show Threads" ? "Hide Threads" : "Show Threads";
+            });
+        });
+    });
 
     </script>
 </body>
