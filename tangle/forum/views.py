@@ -14,6 +14,7 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.http import HttpResponse
+from django.db.models import Count
 
 def index(request):
     """
@@ -30,7 +31,20 @@ def index(request):
 
     threads = Thread.objects.all()
 
-    context = {'form': form, 'threads': threads}
+    latest_thread = Thread.objects.latest('date_created') if Thread.objects.exists() else None
+    latest_reply = Reply.objects.latest('date_created') if Reply.objects.exists() else None
+    most_liked_thread = Thread.objects.annotate(likes_count=Count('liked_by')).order_by('-likes_count').first() if Thread.objects.exists() else None
+
+    context = {
+        'form': form,
+        'threads': threads,
+        'latest_thread': latest_thread,
+        'latest_reply': latest_reply,
+        'most_liked_thread': most_liked_thread,
+        'total_threads': Thread.objects.count(),
+        'total_replies': Reply.objects.count(),
+    }
+
     return render(request, 'forum/index.html', context)
 
 
@@ -318,4 +332,7 @@ def update_likes(request):
     except Thread.DoesNotExist:
         return JsonResponse({'status': 'error', 'error':
                              'Thread not found'}, status=404)
+    
+
+
 
