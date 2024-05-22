@@ -5,7 +5,7 @@ from .forms import ExtendedAuthenticationForm
 
 urlpatterns = [
     path('register/', views.register, name='register'),
-    path('accounts/profile/', views.profile, name='profile'),
+    path('profile/', views.profile, name='profile'),
     path('login/', auth_views.LoginView.as_view(template_name=
     'user_profile/login.html', authentication_form=ExtendedAuthenticationForm), 
     name='login'), 
