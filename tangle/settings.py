@@ -33,7 +33,7 @@ if os.path.isfile('.env'):
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
@@ -71,7 +71,10 @@ ROOT_URLCONF = 'tangle.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates/forum'),
+            os.path.join(BASE_DIR, 'templates/user_profile'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
