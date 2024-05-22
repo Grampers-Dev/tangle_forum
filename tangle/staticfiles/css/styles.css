@@ -1,0 +1,473 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./fonts/Ubuntu-regular/Ubuntu-regular.eot');
+  src: url('./fonts/Ubuntu-regular/Ubuntu-regular.eot?#iefix') format('embedded-opentype'),
+       local('Ubuntu'),
+       local('Ubuntu-regular'),
+       url('./fonts/Ubuntu-regular/Ubuntu-regular.woff2') format('woff2'),
+       url('./fonts/Ubuntu-regular/Ubuntu-regular.woff') format('woff'),
+       url('./fonts/Ubuntu-regular/Ubuntu-regular.ttf') format('truetype'),
+       url('./fonts/Ubuntu-regular/Ubuntu-regular.svg#Ubuntu') format('svg');
+}
+
+body {
+    /*background-color: rgba(44, 62, 80, .9);*/
+    background-color: rgba(29, 132, 99, 0.9);
+    font-family: "Unbounded",Ubuntu, verdana, georgia, serif, sans-serif;
+    font-weight: 400;
+}
+@media (min-width: 1200px) {
+    div.container {
+        width: 1018px;
+        border-radius: 20px;
+    }
+    div.container_login {
+        width: auto;
+    }
+}
+
+
+
+div.container {
+    margin-top: 30px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    min-inline-size: fit-content;
+}
+
+a, a:hover, a:active, a:focus, a:visited {
+    text-decoration: none;
+    /*color: blue;*/
+}
+
+a:hover {
+    color: rgba(51, 183, 112, .9);
+}
+
+a {
+    color:#ffffff;
+}
+  
+.white {
+    color: white !important;
+}
+
+section#wrapper {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid rgba(44, 62, 80, .2);
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 15px;
+    padding-top: 5px;
+    background-color: white;
+    min-height: 500px;
+}
+div.logo {
+    color: #2c3e50;
+    font-size: 30px;
+    font-weight: bolder;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+div.logo > div {
+    font-size: 30px;
+    font-weight: bolder;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: auto;
+}
+div.logo > div > a {
+    color: white !important;
+}
+span.tagline {
+    font-size: 20px !important;
+    font-weight: normal;
+    font-style: italic;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    display: block;
+    text-align: center;
+}
+div.pageTitle {
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 15px;
+    text-align: center;
+    margin-top: 100px;
+    text-shadow: 0px 0px 18px white;
+}
+div._panel {
+    border: 1px solid rgba(44, 62, 80, .1);
+    /*box-shadow: 1px 1px 1px rgba(44, 62, 80, .5);*/
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-color: rgba(51, 122, 183, .5);
+    box-shadow: 2px 2px 2px rgba(51, 122, 183, .2);
+}
+div._panel div.info-bit {
+    border-right: 1px solid rgba(44, 62, 80, .5);
+    font-size: 18px;
+}
+div._panel div.info-bit-last {
+    border-right: none;
+}
+div._panel div.info-bit > h1, div._panel div.info-bit-last > h1 {
+    font-size: 20px;
+}
+.panel {
+    background-color: none;
+}
+.center {
+    text-align: center !important;
+}
+.left {
+    text-align: left !important;
+}
+.bold {
+    font-weight: bolder !important;
+}
+.sixty {
+    width: 60%;
+}
+.twenty {
+    width: 20%;
+}
+.fifteen {
+    width: 15%;
+}
+.thirty {
+    width: 30%;
+}
+.forty {
+    width: 40%;
+}
+table {
+    width: 100%;
+}
+div.panel, .btn {
+    border-radius: 0;
+}
+.form-control {
+    border-radius: 0;
+    height: 50px;
+}
+footer {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.pad {
+    margin-top: 10px;
+}
+div.panel-body {
+    padding-top: 10px;
+}
+.panel-primary > .panel-heading {
+    border-radius: 30px;
+    background-color: rgb(51, 183, 112);
+}
+.panel-primary {
+    /*border-color: rgba(51, 122, 183, .5);*/
+    /*box-shadow: 2px 2px 2px rgba(51, 122, 183, .2);*/
+    border-color: rgba(51, 183, 112, .5);
+    box-shadow: 2px 2px 2px rgba(51, 183, 112, .2);
+}
+.panel-title {
+    margin-bottom: 10px;
+}
+
+.panel panel-primary reply {
+    border-radius: 3px;
+}
+
+.btn-primary, .btn-danger {
+    background-color: rgb(51, 183, 112);
+    border-color: rgba(51, 183, 112, .5);
+    border-radius: 10px;
+}
+.btn-primary:hover, .btn-primary:active,
+.btn-primary:focus, .btn-primary:visited  {
+    background-color: rgba(51, 183, 112, .8);
+    border-color: rgba(51, 183, 112, .5);
+}
+.big {
+    font-size: 20px;
+}
+.reply-msg {
+    padding-top: 10px;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+.reply-details {
+    border-left: 1px groove rgba(51, 122, 183, .2); 
+    padding-left: 10px;
+}
+p {
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+}
+#loginBlock {
+    margin-top: 30px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+}
+.modal-header {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    box-shadow: 2px 2px 2px rgba(51, 183, 112, .2);
+    color: white;
+}
+
+.m-item {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+blockquote {
+    padding: 1px 5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    border-left: 3px solid rgba(51, 183, 112, .5);
+}
+.pagination>.active>a, .pagination>.active>a:focus, 
+.pagination>.active>a:hover, .pagination>.active>span, 
+.pagination>.active>span:focus, .pagination>.active>span:hover {
+    background-color: rgba(51, 183, 112, .9); 
+    border-color: rgba(51, 183, 112, .5);
+}
+div.menu {
+    text-align: center;
+    margin-bottom: 15px;
+}
+ 
+@media( max-width: 800px ) {
+    div._panel div.info-bit {
+        border-right: none;
+        border-bottom: 1px solid rgba(44, 62, 80, .5);
+    }
+    div.info-bit-last {
+        border-bottom: none;
+    }
+}
+
+.list-group-item {
+    color: #333; /* Ensuring text is readable against a light background */
+}
+
+.pull-right {
+    color: #28a745; /* A green shade to signify growth/positives like likes */
+}
+
+.help-block {
+    color: #737373; /* Grey text for instructions */
+    font-size: 0.9em; /* Smaller text for help messages */
+}
+
+.alert-danger, .help-block {
+    margin-top: 10px; /* Spacing for better layout */
+}
+
+.logo-image {
+    height: 300px;
+    margin-top: 100px;
+}
+
+.error-minlength {
+    color: red;
+}
+.error-password {
+    color: red;
+}
+.error-password-mismatch {
+    color: red;
+}
+
+.panel.panel-primary, form#registration-form, .col-lg-10.col-lg-offset-1 {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 100px;
+}
+
+.panel.panel-thread {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 100px;
+}
+
+.text-muted {
+    color: #fff;
+}
+
+.navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+    padding: 2rem; /* Adjust padding as needed */
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 60px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem; /* Adjust padding as needed */
+    background-color: rgb(0, 0, 0, );
+}
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+.navbar-brand .logo-main {
+    width: 80px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 10px;
+}
+.navbar-nav .nav-item {
+    margin-left: 15px; /* Adjust spacing between links */
+}
+.container-content {
+    padding-top: 80px; /* Adjust padding to height of header */
+}
+
+.navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.hidden-content {
+    display: none; /* Hide the content initially */
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    border: 1px solid #ddd;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+
+div#r1 {
+    margin-top: 2px;
+}
+
+.panel>.list-group .list-group-item, .panel>.panel-collapse>.list-group .list-group-item {
+    border-width: 1px 0;
+    border-radius: 0;
+    background-color: inherit;
+    color: white;
+}
+
+#_reply {
+    margin-top: 100;
+}
+
+.col-lg-8 {
+    width: 100%;
+    margin-top: 100px;
+    color: rgb(0, 0, 0);
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: #fff;
+}
+
+::marker {
+    text-decoration: none;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+    display: inline;
+}
+
+.pageTitle {
+    text-shadow: #fff;
+}
+
+.sidebar {
+    position: fixed;
+    top: 80px;
+    right: 10px;
+    width: 250px;
+    /* height: 100%; */
+    padding: 15px;
+    border-width: 1px solid black;
+    border-radius: 0;
+    background-color: rgba(44, 62, 80, .2);
+    color: white;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes the image rounded */
+    object-fit: cover; /* Ensures the image covers the entire area */
+    border: 2px solid #ddd; /* Optional: Adds a border */
+    padding: 5px; /* Optional: Adds padding */
+}
+
+.toolbar.d-flex.justify-content-end.mb-3 {
+    display: ruby-text;
+}
+
+i {
+    color: #fff;
+}
+
+div#editProfileForm {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+textarea#id_bio {
+    width: -webkit-fill-available;
+}
+
+.col-md-6 {
+    width: 100%;
+}
+
+.center {
+    text-align: center !important;
+    color: white;
+    font-weight: bolder;
+}
+
+
