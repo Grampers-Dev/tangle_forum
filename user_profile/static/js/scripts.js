@@ -45,16 +45,14 @@ function typeWriter() {
 
 typeWriter(); // Start the effect
 
-const bodyElement = document.querySelector('body');
 let degree = 0;
 let animationFrameId;
+const bodyElement = document.body;
 
-// Function to update the gradient based on screen size and rotation degree
 function updateGradient() {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    // Calculate a size that surely covers the entire element even during rapid resizes
-    const size = Math.max(width, height) * 2; // Ensure an overly sufficient coverage
+    const width = document.documentElement.scrollWidth;
+    const height = document.documentElement.scrollHeight;
+    const size = Math.max(width, height) * 2;
 
     degree = (degree + 0.5) % 360; // Increment degree slowly to animate rotation
     const gradientColor = `linear-gradient(${degree}deg, rgba(255,0,0,1), rgba(0,0,255,1))`;
@@ -66,15 +64,12 @@ function updateGradient() {
     animationFrameId = requestAnimationFrame(updateGradient); // Continue the animation
 }
 
-
-// Function to start the animation
 function startAnimation() {
     if (!animationFrameId) {
         updateGradient();
     }
 }
 
-// Function to stop the animation when it is no longer needed
 function stopAnimation() {
     if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
@@ -97,10 +92,14 @@ function debounce(func, wait) {
 // Debounced version of updateGradient
 const debouncedUpdateGradient = debounce(function() {
     updateGradient();
-}, 50);  // Adjust delay as necessary, 50ms is generally reasonable
+}, 50);
 
 // Event listener to update gradient immediately on window resize
-window.addEventListener('resize', updateGradient);
+window.addEventListener('resize', debouncedUpdateGradient);
+
+// MutationObserver to detect DOM changes
+const observer = new MutationObserver(debouncedUpdateGradient);
+observer.observe(document.body, { childList: true, subtree: true, attributes: true });
 
 // Start the animation when the document is loaded
 document.addEventListener('DOMContentLoaded', startAnimation);
@@ -141,4 +140,5 @@ $(document).ready(function(){
         $(target).toggle();
     });
 });
+
 
