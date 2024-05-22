@@ -1,7 +1,6 @@
 # Tangle
 
-[![Build Status](https://img.shields.io/travis/username/repo.svg)](https://travis-ci.org/username/repo)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![Main Logo](https://res.cloudinary.com/dhx65uemx/image/upload/v1715630230/Tangle_hokbbr.svg)
 
 ## Overview of Tangle
 
