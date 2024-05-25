@@ -327,7 +327,7 @@ This structured approach not only allows me to manage my workload efficiently as
 - **Cloudinary:** Used to store media files.
 - **Balsamiq:** Used to create wireframes during the design process.
 - **Mermaidv10.9.0 Live Editor:** Used to create entity relationship diagrams (ERD) for modeling the project database.
-- **Google Fonts:** Used to import the font 'Source Sans 3'. Font files have been included in the assets/fonts folder to ensure they don't have to be loaded from an external resource.
+- **Google Fonts:** Used to import the font 'Unbounded'. Font files have been included in the assets/fonts folder to ensure they don't have to be loaded from an external resource.
 - **LightHouse:** Used to assess the website's performance.
 - **WAVE:** Used to further evaluate the website's accessibility.
 - **VS Code:** Used for writing code.
