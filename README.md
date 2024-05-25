@@ -87,7 +87,7 @@ Conduct a thorough analysis of competing products to identify gaps in the market
 
 **Technology Stack**
 - Django
-- React (Frontend)
+- JavaScript/CSS (Frontend)
 - PostgreSQL
 
 **Development Practices**
@@ -254,6 +254,11 @@ The database schema supports a Django application with user profiles, discussion
 - Many-to-Many: Users to Threads via Threads_Liked_By and Threads_Disliked_By - Users can like or dislike threads.
 - One-to-Many: Threads to Replies - Each thread can have multiple replies.
 
+ # Entity-Relationship Diagram
+
+![ERD](https://res.cloudinary.com/dhx65uemx/image/upload/v1716642448/ERD/hvjul6xur93mr4noelbz.svg)
+
+
 ## Skeleton Plane
 
 ## Surface Plane
@@ -321,7 +326,7 @@ This structured approach not only allows me to manage my workload efficiently as
 - **ElephantSQL:** Used for the project's PostgreSQL database.
 - **Cloudinary:** Used to store media files.
 - **Balsamiq:** Used to create wireframes during the design process.
-- **Lucidchart:** Used to create entity relationship diagrams (ERD) for modeling the project database.
+- **Mermaidv10.9.0 Live Editor:** Used to create entity relationship diagrams (ERD) for modeling the project database.
 - **Google Fonts:** Used to import the font 'Source Sans 3'. Font files have been included in the assets/fonts folder to ensure they don't have to be loaded from an external resource.
 - **LightHouse:** Used to assess the website's performance.
 - **WAVE:** Used to further evaluate the website's accessibility.
