@@ -14,7 +14,7 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-# Assuming you have another model called Photo, define it here.
+
 class Photo(models.Model):
     image = CloudinaryField('image')
     description = models.TextField(blank=True)
