@@ -6,6 +6,9 @@
 
 **Tangle** is a streamlined forum where users can engage in discussions by creating threads, replying to them, and expressing their preferences through likes. Designed with simplicity and seamless user experience in mind, Tangle offers an intuitive interface that makes online discussions both engaging and efficient.
 
+![Responsive Mockup](https://res.cloudinary.com/dhx65uemx/image/upload/v1716649559/mockups/jpf2exnggx1fryt1p83a.png)
+
+
 ## Key Features
 
 - **Thread Creation**: Users can start new discussion threads on topics of interest, fostering a community of sharing and learning.
