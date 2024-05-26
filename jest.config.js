@@ -1,4 +1,4 @@
 module.exports = {
-    testEnvironment: 'jsdom',
-    setupFiles: ['text-encoding']
-  };
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+};

@@ -1,0 +1,25 @@
+{
+  "name": "tangle",
+  "version": "1.0.0",
+  "description": "A brief description of your project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --config jest.config.js"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ]
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "eslint": "^9.3.0",
+    "globals": "^15.3.0",
+    "gsap": "^3.12.5",
+    "jest": "^26.6.3",
+    "jquery": "^3.6.0",
+    "jsdom": "^16.7.0"
+  }
+}
