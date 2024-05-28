@@ -17,6 +17,90 @@ All Python code written for the project has been tested by writing automated uni
 All JavaScript code written for the project has been tested by writing automated tests using [Jest](https://jestjs.io/). 98% of the JavaScript code is covered by the tests.
 ![Jest Results](https://res.cloudinary.com/dhx65uemx/image/upload/v1716749483/testing/t0tz48h2mjbbz18ntah8.png)
 
+### Coverage Report Analysis and Future Improvements
+
+My coverage report shows an overall test coverage of 85%, which is generally good. However, there are some areas where I can make improvements to ensure my application is robust and well-tested. Here's a detailed analysis of the current coverage and my plan for future enhancements.
+![Coverage Report](https://res.cloudinary.com/dhx65uemx/image/upload/v1716914939/testing/ksdwpjfiwd2lvshaiz3o.png)
+
+#### Current Coverage Breakdown:
+
+- **Excellent Coverage (100%)**:
+  - **forum**: `__init__.py`, `admin.py`, `apps.py`, `forms.py`, `migrations`, `test_views.py`, `tests.py`, `urls.py`
+  - **tangle**: `__init__.py`
+  - **user_profile**: `__init__.py`, `admin.py`, `apps.py`, `migrations`, `urls.py`
+
+- **Good Coverage (80%-98%)**:
+  - **tangle**: `settings.py` (98%), `urls.py` (86%), `manage.py` (82%)
+  - **user_profile**: `forms.py` (85%), `models.py` (89%), `tests.py` (91%)
+
+- **Moderate Coverage (60%-76%)**:
+  - **forum**: `models.py` (68%), `views.py` (76%)
+  - **user_profile**: `views.py` (60%)
+
+- **Low/No Coverage (0%)**:
+  - **tangle**: `asgi.py`, `wsgi.py`
+
+### My Plan for Future Improvements:
+
+#### 1. **Increase Coverage for `forum` and `user_profile` Views**
+
+**`forum/views.py` (76%) and `user_profile/views.py` (60%)**:
+- **Goal**: Aim for at least 90% coverage.
+- **Actions**:
+  - **Identify Missing Tests**: I'll use coverage reports to pinpoint which lines and functions aren't covered.
+  - **Add Unit Tests**: I will write unit tests for these uncovered lines, focusing on edge cases and error handling.
+  - **Mock External Dependencies**: I'll use mocks for external services and dependencies to isolate and test the functionality effectively.
+
+#### 2. **Enhance Model Coverage**
+
+**`forum/models.py` (68%)**:
+- **Goal**: Improve to 90% or higher.
+- **Actions**:
+  - **Test Model Methods**: I'll ensure all custom methods in the models are tested thoroughly.
+  - **Validation and Constraints**: Writing tests for model validation and constraints will help catch any data integrity issues.
+
+#### 3. **Increase Test Coverage for `manage.py` and `tangle` Files**
+
+**`manage.py` (82%), `tangle/settings.py` (98%), `tangle/urls.py` (86%)**:
+- **Goal**: Achieve 100% coverage.
+- **Actions**:
+  - **Integration Tests**: I'll write integration tests that cover the full application flow, ensuring `manage.py` and routing are tested.
+  - **Settings and Configurations**: Testing different settings configurations, especially for production and development environments, will be a priority.
+
+#### 4. **Improve Coverage for ASGI and WSGI**
+
+**`tangle/asgi.py` and `tangle/wsgi.py` (0%)**:
+- **Goal**: Achieve at least 80% coverage.
+- **Actions**:
+  - **Deployment Tests**: I'll include tests that simulate deployment environments to ensure ASGI and WSGI configurations work as expected.
+  - **Configuration Testing**: Testing different configurations and middleware setups will help ensure robustness.
+
+### My Timeline and Milestones:
+
+1. **Week 1-2**:
+   - Focus on `forum/views.py` and `user_profile/views.py`.
+   - Identify uncovered lines and add corresponding unit tests.
+
+2. **Week 3-4**:
+   - Increase coverage for `forum/models.py`.
+   - Write tests for model methods and validation logic.
+
+3. **Week 5**:
+   - Improve test coverage for `manage.py` and `tangle` settings.
+   - Write integration tests and ensure different configurations are tested.
+
+4. **Week 6**:
+   - Focus on `asgi.py` and `wsgi.py`.
+   - Write deployment and configuration tests.
+
+5. **Week 7**:
+   - Review and refactor tests.
+   - Ensure all new tests are well-documented and maintainable.
+
+### Conclusion:
+
+By following this detailed plan and focusing on the uncovered areas, I can enhance the robustness and reliability of my application. Given time constraints, I wasn't able to address everything initially, but these steps will ensure continued high quality as the codebase evolves. Regular reviews and updates to my tests will help maintain this quality.
+
 ## Manual Testing
 
 - The website was manually tested on a variety of devices (desktop, laptop, tablet, and smartphone) and browsers. The following browsers and operating systems have been tested:
