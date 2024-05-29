@@ -15,6 +15,7 @@ All Python code written for the project has been tested by writing automated uni
 ### JavaScript Testing
 
 All JavaScript code written for the project has been tested by writing automated tests using [Jest](https://jestjs.io/). 98% of the JavaScript code is covered by the tests.
+![Jshint Report](https://res.cloudinary.com/dhx65uemx/image/upload/v1717009112/testing/msfko10jntgndhff237v.png)
 ![Jest Results](https://res.cloudinary.com/dhx65uemx/image/upload/v1716749483/testing/t0tz48h2mjbbz18ntah8.png)
 
 ### Coverage Report Analysis and Future Improvements
