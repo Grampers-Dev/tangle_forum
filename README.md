@@ -253,6 +253,7 @@ The database schema supports a Django application with user profiles, discussion
 - **updated** (datetime): Timestamp of last update.
 
 **Relationships:**
+
 - One-to-One: Users to Profiles - Each user has one profile.
 - Many-to-Many: Users to Threads via Threads_Liked_By and Threads_Disliked_By - Users can like or dislike threads.
 - One-to-Many: Threads to Replies - Each thread can have multiple replies.
@@ -261,8 +262,15 @@ The database schema supports a Django application with user profiles, discussion
 
 ![ERD](https://res.cloudinary.com/dhx65uemx/image/upload/v1716642448/ERD/hvjul6xur93mr4noelbz.svg)
 
-
 ## Skeleton Plane
+
+The overall layout of the website stays close to tried and tested forums, I wanted to modernize the look with a fresh edgey look
+
+The website consists of three main sections: A header with the logo, the main title, and the navigation menu, a main section for the content, and a footer.
+
+The website is designed to be responsive for all screen sizes.
+
+The wireframes for the project can be found here:
 
 ## Surface Plane
 
