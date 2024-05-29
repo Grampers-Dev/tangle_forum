@@ -1,8 +1,18 @@
 # Specify language for files
 *.py linguist-language=Python
 
-# Mark specific directories as vendored to exclude from language stats
-/static/* linguist-vendored
-/node_modules/* linguist-vendored
-/migrations/* linguist-generated
+# Mark specific directories and files as vendored to exclude from language stats
+/static/** linguist-vendored
+/node_modules/** linguist-vendored
+/migrations/** linguist-generated
 *.min.js linguist-vendored
+*.map linguist-vendored
+*.js linguist-vendored
+*.css linguist-vendored
+*.html linguist-vendored
+*.json linguist-vendored
+*.lock linguist-vendored
+*.txt linguist-vendored
+*.md linguist-vendored
+*.yml linguist-vendored
+*.yaml linguist-vendored
