@@ -266,6 +266,21 @@ The database schema supports a Django application with user profiles, discussion
 
 ## Surface Plane
 
+Similar to the general layout, the goal of the visual design of the website was to stay close to the design of original forums, while updating and modernizing design elements where appropriate.
+
+#### Colors
+
+The project uses a fresh modern color scheme, the inspiration comes from various web3 related projects.
+
+The color scheme consists of two main colors and one tertiary color:
+
+<!-- Display colors in markdown: https://stackoverflow.com/a/41247934 -->
+![#ff0000](https://placehold.co/100x100/ff0000/ff0000.png) Primary color: #ff0000
+
+![#0000ff](https://placehold.co/100x100/0000ff/0000ff.png) Secondary color: #0000ff
+
+![#33b770](https://placehold.co/100x100/33b770/33b770.png) Tertiary color: #33b770
+
 ### Agile Methodolgy
 
 #### Sprint Setup
@@ -313,13 +328,29 @@ This structured approach not only allows me to manage my workload efficiently as
 
 ## Additional Python Packages
 
-- **gunicorn:** WSGI server used for deployment.
-- **psycopg2:** PostgreSQL database integration.
-- **dj-database-url:** Django database management.
-- **cloudinary:** Cloudinary integration.
-- **dj3-cloudinary-storage:** Using Cloudinary as Django file storage.
-- **django-allauth:** Advanced authentication and user management for Django.
-- **coverage:** Analyzing test coverage.
+The following Python packages are required for this project:
+
+- **asgiref==3.8.1**: ASGI specs, helper utilities, and reference implementations.
+- **certifi==2024.2.2**: Python package for providing Mozilla's CA Bundle.
+- **charset-normalizer==3.3.2**: The Real First Universal Charset Detector.
+- **cloudinary==1.40.0**: Cloudinary is a cloud service that offers a solution to a web application's entire image management pipeline.
+- **dj-database-url==2.1.0**: Django database management.
+- **Django==5.0.4**: The web framework for perfectionists with deadlines.
+- **django-cloudinary-storage==0.3.0**: Using Cloudinary as Django file storage.
+- **django-environ==0.11.2**: Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application.
+- **gunicorn==20.1.0**: WSGI server used for deployment.
+- **idna==3.7**: Internationalized Domain Names in Applications (IDNA).
+- **psycopg2==2.9.9**: PostgreSQL database adapter for the Python programming language.
+- **python-dotenv==1.0.1**: Reads key-value pairs from a .env file and can set them as environment variables.
+- **requests==2.31.0**: A simple, yet elegant, HTTP library.
+- **six==1.16.0**: Python 2 and 3 compatibility utilities.
+- **sqlparse==0.5.0**: A non-validating SQL parser for Python.
+- **typing_extensions==4.11.0**: Backported and Experimental Type Hints for Python.
+- **tzdata==2024.1**: IANA time zone database (tzdata).
+- **urllib3==2.2.1**: A powerful, user-friendly HTTP client for Python.
+- **whitenoise==6.6.0**: Serve static files directly from your application.
+- **django-allauth==0.52.0**: Advanced authentication and user management for Django.
+- **coverage==7.2.1**: Analyzing test coverage.
 
 ## Other Software
 
@@ -335,3 +366,58 @@ This structured approach not only allows me to manage my workload efficiently as
 - **WAVE:** Used to further evaluate the website's accessibility.
 - **VS Code:** Used for writing code.
 
+## Testing
+
+[Testing documentation can be found here](TESTING.md)
+
+## Deployment
+
+The project was deployed to [Heroku](https://heroku.com). The live version of the project can be found at https://tangle-forum-bab6e990981f.herokuapp.com/
+
+The necessary steps to deploy the project are:
+  - Clone or fork the repository.
+  - Create an account at https://cloudinary.com and get your Cloudinary URL from the dashboard.
+  - Create a PostgreSQL database, for example at https://www.elephantsql.com/, and find the database address.
+  - Create a new app from the [Heroku dashboard](https://dashboard.heroku.com).
+  - Go to the Settings tab and click on `Reveal Config Vars` in the *Config Vars* section.
+  - Now add the following config vars:
+    |Name|Value|
+    |---|---|
+    |CLOUDINARY_URL|\<Your cloudinary url\>|
+    |DATABASE_URL|\<Your database url\>|
+    |DEFAULT_FROM_EMAIL|\<your email address\>|
+    |DEVELOPMENT|FALSE|
+    [EMAIL_HOST_PASSWORD|\<your email password\>|
+    |EMAIL_HOST_USER|\<your email address\>|
+    |PORT|8000|
+    |SECRET_KEY|\<some random string\>|
+
+  - Add `Python` to the *Buildpacks* section.
+  - Click on the *Deploy* tab and connect the Heroku app to your GitHub repository.
+  - Choose the branch you want to deploy in the *Manual deploy* section and click on **Deploy Branch**.
+
+## Credits
+
+The following resources were used for the project:
+
+### Code
+
+I made extensive use of the Django documentation avilable at: https://docs.djangoproject.com/en/stable/. 
+
+The inital setup and the basic structure of the project followed the instructions from the Code Institute Django Blog walkthrough project.
+
+All other used sources are listed here (all code from these sources has been thoroughly reviewd, understood and adapted to the best of my abillity for my project):
+// References:
+- [Django Models Documentation](https://docs.djangoproject.com/en/stable/topics/db/models/)
+- [Cloudinary Django Integration](https://cloudinary.com/documentation/django_integration)
+- [Django ManyToManyField](https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ManyToManyField)
+- [Django Model Methods](https://docs.djangoproject.com/en/stable/topics/db/models/#model-methods)
+- [Django ContentTypes Framework](https://docs.djangoproject.com/en/stable/ref/contrib/contenttypes/)
+- [Submit Forms with jQuery AJAX](https://stackabuse.com/submit-forms-with-jquery-ajax/)
+- [How to Submit Form via Ajax using jQuery](https://www.codexworld.com/submit-form-via-ajax-using-jquery/)
+- [Typing Effect Using JavaScript](https://www.w3schools.com/howto/howto_js_typewriter.asp)
+- [How to Create an Animated Gradient Background](https://css-tricks.com/creating-an-animated-gradient-background/)
+- [Debounce Function in JavaScript](https://davidwalsh.name/javascript-debounce-function)
+- [MutationObserver API](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+- [GSAP Animation Library](https://greensock.com/gsap/)
+- [jQuery toggle() Method](https://www.w3schools.com/jquery/eff_toggle.asp)
