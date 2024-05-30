@@ -118,13 +118,3 @@ def custom_logout(request):
     messages.info(request, 'You have been logged out.')
     return redirect('login')
     
-def upload(request):
-  context = dict( backend_form = PhotoForm())
-
-  if request.method == 'POST':
-    form = PhotoForm(request.POST, request.FILES)
-    context['posted'] = form.instance
-    if form.is_valid():
-        form.save()
-
-  return render(request, 'upload.html', context)
