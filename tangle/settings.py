@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+import sys
 from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if os.path.isfile('.env'):
     import dj_database_url
 
-
+development = os.environ.get("DEVELOPMENT", "False").lower() == "true"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -33,11 +34,14 @@ if os.path.isfile('.env'):
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = development
 
 X_FRAME_OPTIONS = ""
 
-ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1',]
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'localhost']
+
+if 'test' in sys.argv:
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -93,17 +97,22 @@ WSGI_APPLICATION = 'tangle.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
+#if development:
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.postgresql',
+#            'NAME': 'your_dev_db_name',
+#            'USER': 'grampers',
+#            'PASSWORD': 'Glksnmclkac74@',  # Ensure this is the correct password
+#            'HOST': 'localhost',
+#            'PORT': '5432',
+#        }
 #    }
-#}
-
-# Parse the database URL from the environment variable
+#else:
+    
 DATABASES = {
-    'default': dj_database_url.parse(os.environ['DATABASE_URL'])
-}
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
 
 
 # Email Settings
