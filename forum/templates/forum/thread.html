@@ -17,24 +17,24 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'index' %}">
-                                <i class="fas fa-home"></i>
+                                <i class="fas fa-home"></i> Home
                             </a>
                         </li>                        
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'profile' %}">
-                                <i class="far fa-user"></i>
+                                <i class="far fa-user"></i> Profile
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">
-                                <i class="fas fa-sign-out-alt"></i>
+                                <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">
-                                <i class="fas fa-sign-in-alt"></i>
+                                <i class="fas fa-sign-in-alt"></i> Login
                             </a>
                         </li>
                         {% endif %}
@@ -135,7 +135,11 @@
                             <div class="col-lg-3">
                                 <div class="reply-details">
                                     <i class="glyphicon glyphicon-calendar"></i> {{ reply.date_created }} <br />
-                                    <i class="glyphicon glyphicon-user"></i> {{ reply.user.username }}
+                                    {{ reply.user.username }} {% if reply.user.user_profile.image %}
+                                    <img src="{{ reply.user.user_profile.image.url }}" alt="{{ reply.user.username }}" class="profile-image-thread">
+                                {% else %}
+                                    <i class="fas fa-user"></i>
+                                {% endif %} <br />
                                     {% if user.is_authenticated and reply.user == user %}
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal{{ reply.id }}">
                                         <i class="fas fa-edit"></i> Update
