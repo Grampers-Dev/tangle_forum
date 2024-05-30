@@ -23,24 +23,24 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'index' %}">
-                                <i class="fas fa-home"></i>
+                                <i class="fas fa-home"></i> Home
                             </a>
                         </li>                        
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'profile' %}">
-                                <i class="far fa-user"></i>
+                                <i class="far fa-user"></i> Profile
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">
-                                <i class="fas fa-sign-out-alt"></i>
+                                <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">
-                                <i class="fas fa-sign-in-alt"></i>
+                                <i class="fas fa-sign-in-alt"></i> Login
                             </a>
                         </li>
                         {% endif %}
