@@ -23,9 +23,9 @@ div.container {
     min-inline-size: fit-content;
 }
 
-a, a:hover, a:active, a:focus, a:visited {
+a, a:hover, a:active, a:focus, a:visited, {
     text-decoration: none;
-    /*color: blue;*/
+    color: blue;
 }
 
 a:hover {
@@ -404,8 +404,17 @@ div#r1 {
     display: ruby-text;
 }
 
-i {
-    color: #fff;
+.nav-link {
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover, .nav-link:focus, .nav-link:active {
+    color: #28a745;
+    text-decoration: none; 
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:active {
+    color: #28a745; 
 }
 
 div#editProfileForm {
@@ -415,8 +424,9 @@ div#editProfileForm {
     border-radius: 30px;
 }
 
-textarea#id_bio {
+textarea#id_bio, input#id_location, input#id_birth_date{
     width: -webkit-fill-available;
+    color: black;
 }
 
 .col-md-6 {
@@ -427,6 +437,17 @@ textarea#id_bio {
     text-align: center !important;
     color: white;
     font-weight: bolder;
+}
+
+.far {
+    font-weight: 600;
+}
+
+.profile-image-thread {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 
