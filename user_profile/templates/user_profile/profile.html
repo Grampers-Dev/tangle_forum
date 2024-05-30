@@ -17,24 +17,24 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'index' %}">
-                                <i class="fas fa-home"></i>
+                                <i class="fas fa-home"></i> Home
                             </a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'profile' %}">
-                                <i class="far fa-user"></i>
+                                <i class="far fa-user"></i> Profile
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">
-                                <i class="fas fa-sign-out-alt"></i>
+                                <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">
-                                <i class="fas fa-sign-in-alt"></i>
+                                <i class="fas fa-sign-in-alt"></i> Login
                             </a>
                         </li>
                         {% endif %}
@@ -52,9 +52,12 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">My Info <i class="fas fa-info-circle"></i></h3>
                             </div>
-                            {% if object.image %}
-                            <img src="{{ object.image.url }}" alt="Image Description" class="profile-image img-fluid">
-                            {% endif %}
+                            {% if request.user.user_profile.image %}
+                            <img src="{{ request.user.user_profile.image.url }}" alt="{{ request.user.username }}" class="profile-image">
+                        {% else %}
+                            <i class="fas fa-user"></i>
+                        {% endif %}
+                        {{ request.user.username }}
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     Bio: <strong>{{ object.bio }}</strong>
@@ -112,16 +115,16 @@
 </div>
 
 <script>
-    document.getElementById('editProfileBtn').addEventListener('click', function() {
-        var form = document.getElementById('editProfileForm');
-        if (form.style.display === 'none') {
-            form.style.display = 'block';
-            this.textContent = 'Cancel';
-        } else {
-            form.style.display = 'none';
-            this.textContent = 'Edit Profile';
-        }
-    });
+        document.getElementById('editProfileBtn').addEventListener('click', function() {
+            var form = document.getElementById('editProfileForm');
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+                this.textContent = 'Cancel';
+            } else {
+                form.style.display = 'none';
+                this.textContent = 'Edit Profile';
+            }
+        });
 </script>
 
 {% endblock %}
