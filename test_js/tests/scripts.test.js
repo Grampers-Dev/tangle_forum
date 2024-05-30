@@ -19,7 +19,7 @@ const {
   togglePanel
 } = require('../../user_profile/static/js/scripts');
 
-// Mock functions 
+// Mock functions if necessary
 jest.spyOn(window, 'alert').mockImplementation(() => {});
 
 
