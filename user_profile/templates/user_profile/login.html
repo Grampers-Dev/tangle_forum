@@ -1,5 +1,6 @@
 {% extends 'user_profile/base.html' %}
 {% block body %}
+{% load static %}
 
 <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,6 +58,8 @@
                             <button type="submit" class="btn btn-primary">
                                 Login <i class="glyphicon glyphicon-arrow-right"></i>
                             </button>
+                            <a href="{% url 'reset_password' %}">Forgot your password?</a>
+
                             <a href="{% url 'register' %}" class="btn btn-link pull-right">
                                 <i class="glyphicon glyphicon-plus-sign"></i> Go to Register
                             </a>
