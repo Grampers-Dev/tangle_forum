@@ -10,6 +10,7 @@ from forum.models import Profile
 from cloudinary.forms import cl_init_js_callbacks      
 from .forms import ProfileForm
 from user_profile.models import Profile 
+from django.contrib.auth.forms import PasswordResetForm
 
 
 def register(request):
@@ -117,4 +118,50 @@ def custom_logout(request):
     logout(request)
     messages.info(request, 'You have been logged out.')
     return redirect('login')
+
+#def password_reset_view(request):
+#    """
+#    View for password reset.
+#
+#    Handles the password reset form submission and sends an email to the user with a password reset link.
+#
+#    Parameters:
+#        request (HttpRequest): The HTTP request object.
+#
+#    Returns:
+#        HttpResponseRedirect: Redirects to the password reset done page upon successful password reset request.
+#    """
+#    if request.method == 'POST':
+#        form = PasswordResetForm(request.POST)
+#        if form.is_valid():
+#            form.save()
+#            return redirect('login')
+#    else:
+#        form = PasswordResetForm()
+#    return render(request, 'user_profile/login.html')
+
+def custom_password_reset(request):
+    """
+    Custom password reset view.
+
+    Handles the password reset form submission and sends an email to the user with a password reset link.
+
+    Parameters:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponseRedirect: Redirects to the password reset done page upon successful password reset request.
+
+    References:
+        Django authentication:
+        https://docs.djangoproject.com/en/stable/topics/auth/default/#using-the-views
+    """
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('password_reset_done')
+    else:
+        form = PasswordResetForm()
+    return render(request, 'account/password_reset_form.html', {'form': form})
     

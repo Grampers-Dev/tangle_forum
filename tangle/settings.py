@@ -21,6 +21,7 @@ load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 if os.path.isfile('.env'):
     import dj_database_url
@@ -53,11 +54,45 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
     'cloudinary',
     'cloudinary_storage',
     'user_profile',
     'forum',
 ]
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+LOGIN_REDIRECT_URL = 'login'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Tangle] '
+
+ACCOUNT_RATE_LIMITS = {
+    'reset_password': '5/m',  # Max 5 requests per minute
+    'reset_password_email': '5/m',
+    'reset_password_from_key': '20/h',
+    'change_password': '5/m',
+    'set_password': '5/m',
+    'email_add': '5/m',
+    'email_verify': '5/m',
+    'password_change': '5/m',
+    'password_set': '5/m',
+    'email_confirmation': '5/m',
+    'confirm_email': '5/m',  # This replaces ACCOUNT_EMAIL_CONFIRMATION_COOLDOWN
+    'send_email': '5/m',
+    'signup': '5/m',
+}
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,6 +103,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'tangle.urls'
@@ -77,7 +113,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates/forum'),
-            os.path.join(BASE_DIR, 'templates/user_profile'),
+            os.path.join(BASE_DIR, 'user_profile', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -168,7 +204,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'user_profile', 'static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = "/media/"
 

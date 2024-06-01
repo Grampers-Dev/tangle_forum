@@ -118,3 +118,73 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['bio', 'location', 'birth_date', 'image']
+
+
+
+class PasswordChangeForm(forms.Form):
+    """
+    Form for changing the user's password.
+
+    References:
+        Django forms: https://docs.djangoproject.com/en/stable/topics/forms/
+    """
+
+    old_password = forms.CharField(
+        label='Old Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter Old Password',
+            'tabindex': '1'
+        })
+    )
+    new_password1 = forms.CharField(
+        label='New Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter New Password',
+            'tabindex': '2'
+        })
+    )
+    new_password2 = forms.CharField(
+        label='Confirm New Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Confirm New Password',
+            'tabindex': '3'
+        })
+    )
+
+    def __init__(self, *args, **kwargs):
+        """
+        Initialize the form.
+
+        Parameters:
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+
+        References:
+            Django forms:
+            https://docs.djangoproject.com/en/stable/topics/forms/
+        """
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """
+        Clean the form.
+
+        Returns:
+            dict: The cleaned form data.
+
+        References:
+            Django forms:
+            https://docs.djangoproject.com/en/stable/topics/forms/
+        """
+        cleaned_data = super().clean()
+        new_password1 = cleaned_data.get('new_password1')
+        new_password2 = cleaned_data.get('new_password2')
+
+        if new_password1 and new_password2 and new_password1 != new_password2:
+            raise forms.ValidationError('Passwords do not match.')
+
+        return cleaned_data
+    
