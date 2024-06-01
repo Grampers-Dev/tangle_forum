@@ -17,7 +17,8 @@
         <div class="col-lg-12 col-lg-offset-0">
             <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+                    <span class="navbar-toggler-text">Menu</span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav mr-auto">
@@ -41,6 +42,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">
                                 <i class="fas fa-sign-in-alt"></i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">
+                                <i class="fas fa-book"></i> Register
                             </a>
                         </li>
                         {% endif %}
