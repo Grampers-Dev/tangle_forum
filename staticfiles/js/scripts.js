@@ -141,4 +141,11 @@ $(document).ready(function(){
     });
 });
 
+module.exports = {
+    typeWriter,
+    startAnimation,
+    stopAnimation,
+    initGSAPAnimations,
+    togglePanel
+};
 
