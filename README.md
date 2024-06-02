@@ -90,7 +90,7 @@ Conduct a thorough analysis of competing products to identify gaps in the market
 
 **Technology Stack**
 - Django
-- JavaScript/CSS (Frontend)
+- HTML/JavaScript/CSS (Frontend)
 - PostgreSQL
 
 **Development Practices**
@@ -117,7 +117,7 @@ Plan for ongoing updates and feature enhancements post-launch to keep the applic
 
 ## Conclusion
 
-This Strategy Plane sets a solid foundation for your Django Agile Development project, ensuring that every aspect—from user experience to technology selection—is aligned with the overarching project goals. By maintaining a clear focus on the needs of both users and stakeholders, and by employing robust development and testing practices, this plan aims to guide the project towards a successful completion and sustainable future growth.
+This Strategy Plane sets a solid foundation for my Django Agile Development project, ensuring that every aspect—from user experience to technology selection—is aligned with the overarching project goals. By maintaining a clear focus on the needs of both users and stakeholders, and by employing robust development and testing practices, this plan aims to guide the project towards a successful completion and sustainable future growth.
 
 ---
 
@@ -375,7 +375,7 @@ The following Python packages are required for this project:
 - **Cloudinary:** Used to store media files.
 - **Balsamiq:** Used to create wireframes during the design process.
 - **Mermaidv10.9.0 Live Editor:** Used to create entity relationship diagrams (ERD) for modeling the project database.
-- **Google Fonts:** Used to import the font 'Unbounded'. Font files have been included in the assets/fonts folder to ensure they don't have to be loaded from an external resource.
+- **Google Fonts:** Used to import the font 'Unbounded'.
 - **LightHouse:** Used to assess the website's performance.
 - **WAVE:** Used to further evaluate the website's accessibility.
 - **VS Code:** Used for writing code.
