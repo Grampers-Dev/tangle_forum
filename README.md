@@ -272,6 +272,12 @@ The website is designed to be responsive for all screen sizes.
 
 The wireframes for the project can be found here:
 
+![Login](https://res.cloudinary.com/dhx65uemx/image/upload/v1717323969/mockups/wireframes/tgmetewlz569smfgt5tp.png)
+![Register](https://res.cloudinary.com/dhx65uemx/image/upload/v1717323972/mockups/wireframes/d3ug5cjheu56bo4hqri6.png)
+![Profile](https://res.cloudinary.com/dhx65uemx/image/upload/v1717323975/mockups/wireframes/kelipd7yschsqhz0z1b1.png)
+![Home](https://res.cloudinary.com/dhx65uemx/image/upload/v1717323973/mockups/wireframes/jlvcusdlu0uuddiggmgq.png)
+![Thread](https://res.cloudinary.com/dhx65uemx/image/upload/v1717323970/mockups/wireframes/y2v0iiiz0xbbpymeaj8l.png)
+
 ## Surface Plane
 
 Similar to the general layout, the goal of the visual design of the website was to stay close to the design of original forums, while updating and modernizing design elements where appropriate.
