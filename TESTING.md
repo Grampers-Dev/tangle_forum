@@ -181,6 +181,36 @@ A report on the application website generated with [Chrome Lighthouse](https://d
 - **Enhanced Messaging System**: Provide better feedback and notifications to users.
 - **Continuous Improvements**: Align the project with industry standards and best practices.
 
+## Known Bugs
+
+The JavaScript animation works as intended when the page loads for the first time. However, it has some glitches when screen sizes are reduced or expanded, causing the speed of the animation to increase, which is not the intended behavior.
+
+## Planned Tests to Resolve Bugs
+
+To identify and resolve the cause of the animation speed issues when resizing the screen, I will create the following tests:
+
+### Animation Speed Consistency Test
+
+- Verify that the animation speed remains consistent when the window is resized.
+- Measure the time it takes for a full rotation of the gradient before and after resizing the window.
+
+### Resize Event Handling Test
+
+- Ensure that the resize event does not trigger multiple overlapping animations.
+- Check if `debouncedUpdateGradient` is correctly managing the resize events without causing increased animation speed.
+
+### Performance Impact Test
+
+- Assess the performance impact of the animation during window resize events.
+- Use performance profiling tools to monitor CPU and memory usage before and after resizing the window.
+
+### Animation Frame Request Test
+
+- Ensure that `requestAnimationFrame` and `cancelAnimationFrame` are correctly managed to avoid multiple active frames.
+- Verify that only one animation frame is active at any given time.
+
+These tests will help identify the root cause of the glitches and ensure the animation behaves as expected under various conditions.
+
 ## Conclusion
 
 The focus on core functionalities ensures that the MVP is functional and can be demonstrated effectively. Future updates will address the current limitations and enhance the overall user experience, making the project more robust and user-friendly.
