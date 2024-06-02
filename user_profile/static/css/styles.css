@@ -94,7 +94,6 @@ div.pageTitle {
 }
 div._panel {
     border: 1px solid rgba(44, 62, 80, .1);
-    /*box-shadow: 1px 1px 1px rgba(44, 62, 80, .5);*/
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 0px;
@@ -306,18 +305,27 @@ div.menu {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1rem; 
 }
+
 .navbar-brand {
     display: flex;
     align-items: center;
 }
+
 .navbar-brand .logo-main {
     width: 80px; 
     height: auto;
     margin-right: 10px;
 }
+
 .navbar-nav .nav-item {
     margin-left: 15px;
 }
+
+.navbar-nav {
+    margin: 7.5px -15px;
+    display: flex;
+}
+
 .container-content {
     padding-top: 80px; 
 }
