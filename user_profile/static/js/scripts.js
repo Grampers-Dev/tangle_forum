@@ -46,7 +46,7 @@ function typeWriter() {
 typeWriter(); // Start the effect
 
 let degree = 0;
-let animationFrameId;
+let animationFrameId = null;
 const bodyElement = document.body;
 
 function updateGradient() {
@@ -89,23 +89,26 @@ function debounce(func, wait) {
     };
 }
 
-// Debounced version of updateGradient
-const debouncedUpdateGradient = debounce(function() {
-    updateGradient();
+// Debounced version of updating the gradient only once
+const debouncedResizeHandler = debounce(function() {
+    // Cancel the current animation frame if it exists
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+    }
+    // Restart the animation with the new dimensions
+    startAnimation();
 }, 50);
 
-// Event listener to update gradient immediately on window resize
-window.addEventListener('resize', debouncedUpdateGradient);
-
-// MutationObserver to detect DOM changes
-const observer = new MutationObserver(debouncedUpdateGradient);
-observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+// Event listener to handle window resize
+window.addEventListener('resize', debouncedResizeHandler);
 
 // Start the animation when the document is loaded
 document.addEventListener('DOMContentLoaded', startAnimation);
 
 // Stop the animation on page unload to prevent memory leaks
 window.addEventListener('beforeunload', stopAnimation);
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const logoImage = document.querySelector('.logo-image');

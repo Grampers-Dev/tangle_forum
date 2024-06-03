@@ -1,9 +1,5 @@
 # Testing
 
-## User Story Testing
-
-All user stories have been tested. The results can be found here: [User Story Tests](USERSTORYS.md)
-
 ## Automated Testing
 
 The Python and JavaScript code written for the project has been tested by writing automated unit tests and measuring code coverage. Since even 100% code coverage is no guarantee for bug-free code, thorough [manual tests](#manual-testing) have been conducted as well.
@@ -14,7 +10,7 @@ All Python code written for the project has been tested by writing automated uni
 
 ### JavaScript Testing
 
-All JavaScript code written for the project has been tested by writing automated tests using [Jest](https://jestjs.io/). 98% of the JavaScript code is covered by the tests.
+All JavaScript code written for the project has been tested by writing automated tests using [Jest](https://jestjs.io/).
 ![Jshint Report](https://res.cloudinary.com/dhx65uemx/image/upload/v1717009112/testing/msfko10jntgndhff237v.png)
 ![Jest Results](https://res.cloudinary.com/dhx65uemx/image/upload/v1716749483/testing/t0tz48h2mjbbz18ntah8.png)
 
@@ -164,7 +160,7 @@ A report on the application website generated with [Chrome Lighthouse](https://d
 
 #### User Registration
 
-- A complete setup for user password reset is not included.
+- A partial setup for user password reset is included, varification process needs attention.
 - Enhanced messaging systems and feedback mechanisms need to be integrated to align with industry standards.
 
 #### User Experience

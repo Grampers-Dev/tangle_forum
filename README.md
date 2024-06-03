@@ -435,3 +435,12 @@ All other used sources are listed here (all code from these sources has been tho
 - [MutationObserver API](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
 - [GSAP Animation Library](https://greensock.com/gsap/)
 - [jQuery toggle() Method](https://www.w3schools.com/jquery/eff_toggle.asp)
+
+## Acknowledgements
+
+I would like to thank the following for their support and contributions to this project:
+
+- **Code Institute** for providing the learning platform and resources.
+- **Mentor Femi** for his invaluable guidance and mentorship.
+- **Tutors** for their assistance and support throughout the project.
+- **Friends and Family** for their encouragement and support and testing the project during development.
